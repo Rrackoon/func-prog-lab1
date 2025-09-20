@@ -5,51 +5,34 @@ stages:
 
 build-image:
   stage: build
-  image: docker:20.10.16
-  services:
-    - docker:20.10.16-dind
-  variables:
-    DOCKER_TLS_CERTDIR: ""
+  image: elixir:1.16
   script:
-    - docker build -t elixir-cpp:latest .
-    - docker save elixir-cpp:latest | gzip > elixir-cpp.tar.gz
+    - apt-get update && apt-get install -y build-essential cmake git
+    - echo "Образ собран прямо внутри job"
   artifacts:
     paths:
-      - elixir-cpp.tar.gz
+      - .
     expire_in: 1h
 
 format:
   stage: check
-  image: docker:20.10.16
-  services:
-    - docker:20.10.16-dind
-  variables:
-    DOCKER_TLS_CERTDIR: ""
+  image: elixir:1.16
   script:
-    - docker load < elixir-cpp.tar.gz
-    - docker run --rm -v $PWD:/app -w /app elixir-cpp:latest \
-        bash -c "mix local.hex --force && mix local.rebar --force && mix deps.get && mix format --check-formatted"
+    - mix local.hex --force
+    - mix local.rebar --force
+    - mix deps.get
+    - mix format --check-formatted
 
 lint:
   stage: check
-  image: docker:20.10.16
-  services:
-    - docker:20.10.16-dind
-  variables:
-    DOCKER_TLS_CERTDIR: ""
+  image: elixir:1.16
   script:
-    - docker load < elixir-cpp.tar.gz
-    - docker run --rm -v $PWD:/app -w /app elixir-cpp:latest \
-        bash -c "mix deps.get && mix credo --strict"
+    - mix deps.get
+    - mix credo --strict
 
 test:
   stage: test
-  image: docker:20.10.16
-  services:
-    - docker:20.10.16-dind
-  variables:
-    DOCKER_TLS_CERTDIR: ""
+  image: elixir:1.16
   script:
-    - docker load < elixir-cpp.tar.gz
-    - docker run --rm -v $PWD:/app -w /app elixir-cpp:latest \
-        bash -c "mix deps.get && mix test"
+    - mix deps.get
+    - mix test
