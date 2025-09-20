@@ -2,24 +2,28 @@ stages:
   - check
   - test
 
+variables:
+  MIX_ENV: test
+
 format:
   stage: check
+  image: gitlab.se.ifmo.ru:4815/veixel/functional-programming/elixir-cpp:latest
   script:
     - mix local.hex --force
     - mix local.rebar --force
     - mix deps.get
     - mix format --check-formatted
 
-# Линтер
 lint:
   stage: check
+  image: gitlab.se.ifmo.ru:4815/veixel/functional-programming/elixir-cpp:latest
   script:
     - mix deps.get
     - mix credo --strict
 
-# Тесты
 test:
   stage: test
+  image: gitlab.se.ifmo.ru:4815/veixel/functional-programming/elixir-cpp:latest
   script:
     - mix deps.get
     - mix test
