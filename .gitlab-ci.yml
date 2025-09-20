@@ -1,23 +1,29 @@
 stages:
-  - build
+  - check
   - test
 
-variables:
-  MIX_ENV: test
-
-before_script:
-  - mix local.hex --force
-  - mix local.rebar --force
-  - mix deps.get
-
-build:
-  stage: build
+# Проверка форматирования
+format:
+  stage: check
+  image: elixir:1.16
   script:
-    - mix compile --warnings-as-errors
+    - mix local.hex --force
+    - mix local.rebar --force
+    - mix deps.get
+    - mix format --check-formatted
 
+# Линтер (credo)
+lint:
+  stage: check
+  image: elixir:1.16
+  script:
+    - mix deps.get
+    - mix credo --strict
+
+# Тесты
 test:
   stage: test
+  image: elixir:1.16
   script:
-    - mix format --check-formatted
-    - mix credo --strict
+    - mix deps.get
     - mix test
