@@ -5,7 +5,7 @@ stages:
 # Проверка форматирования
 format:
   stage: check
-  image: elixir:1.16
+  image: elixir:1.15
   script:
     - mix local.hex --force
     - mix local.rebar --force
