@@ -2,28 +2,36 @@ stages:
   - check
   - test
 
-# Проверка форматирования
-format:
-  stage: check
-  image: elixir:latest
-  script:
+
+.default_template:
+  before_script:
+    - apt-get update -y
+    - apt-get install -y curl wget git build-essential
+    - apt-get install -y elixir erlang
     - mix local.hex --force
     - mix local.rebar --force
     - mix deps.get
+
+# Проверка форматирования
+format:
+  stage: check
+  image: ubuntu:22.04
+  extends: .default_template
+  script:
     - mix format --check-formatted
 
 # Линтер (credo)
 lint:
   stage: check
-  image: elixir:1.16
+  image: ubuntu:22.04
+  extends: .default_template
   script:
-    - mix deps.get
     - mix credo --strict
 
 # Тесты
 test:
   stage: test
-  image: elixir:1.16
+  image: ubuntu:22.04
+  extends: .default_template
   script:
-    - mix deps.get
     - mix test
