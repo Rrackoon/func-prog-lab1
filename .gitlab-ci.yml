@@ -1,0 +1,23 @@
+stages:
+  - build
+  - test
+
+variables:
+  MIX_ENV: test
+
+before_script:
+  - mix local.hex --force
+  - mix local.rebar --force
+  - mix deps.get
+
+build:
+  stage: build
+  script:
+    - mix compile --warnings-as-errors
+
+test:
+  stage: test
+  script:
+    - mix format --check-formatted
+    - mix credo --strict
+    - mix test
