@@ -26,7 +26,7 @@ jobs:
         path: |
           deps
           _build
-        key: ${{ runner.os }}-elixir-${{ hashFiles(format='{mix.lock}', '.mix') }}
+        key: ${{ runner.os }}-elixir-${{ hashFiles('mix.lock') }}
 
     - name: Install dependencies  
       run: |
@@ -60,7 +60,7 @@ jobs:
         path: |
           deps
           _build
-        key: ${{ runner.os }}-elixir-${{ hashFiles(format='{mix.lock}', '.mix') }}
+        key: ${{ runner.os }}-elixir-${{ hashFiles('mix.lock') }}
 
     - name: Install dependencies
       run: |
