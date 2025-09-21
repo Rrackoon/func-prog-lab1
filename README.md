@@ -1,21 +1,24 @@
-# MyApp
+# Functional Programming Lab 1
 
-**TODO: Add description**
+[![CI](https://github.com/Rrackoon/func-prog-lab1/actions/workflows/ci.yml/badge.svg)](https://github.com/Rrackoon/func-prog-lab1/actions)
 
-## Installation
+## Описание
+Этот репозиторий содержит лабораторную работу по функциональному программированию на языке Elixir. Реализованы решения для задач 12 и 18 из проекта Эйлер, с использованием различных подходов: модульные реализации, lazy evaluation, map, for-компрехеншены и рекурсия.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `my_app` to your list of dependencies in `mix.exs`:
+- **Task 12**: Треугольное число с большим количеством делителей.
+- **Task 18**: Коллапс треугольника Паскаля.
 
-```elixir
-def deps do
-  [
-    {:my_app, "~> 0.1.0"}
-  ]
-end
-```
+Проект настроен с тестами (ExUnit) и CI/CD через GitHub Actions (проверки форматирования, линтинг с Credo, тесты).
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/my_app>.
+## Требования
+- Elixir ~> 1.18 (и Erlang/OTP 27+).
+- Mix (входит в Elixir).
 
+### Форматирование и линтинг
+- Автоформатирование: `mix format`
+- Проверка форматирования: `mix format --check-formatted`
+- Линтинг: `mix credo` (игнорирует мелкие warnings, как отсутствие @moduledoc)
+
+### Компиляция и запуск модулей
+- Компиляция всех `.ex` файлов в `_build/`, чтобы модули стали доступными: `mix compile`
+- Интерактивный запуск в IEx: `iex -S mix`
