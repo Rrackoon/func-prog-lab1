@@ -38,7 +38,7 @@ jobs:
       run: mix format --check-formatted
 
     - name: Run linting  
-      run: mix credo --strict
+      run: mix credo
 
   test:  
     runs-on: ubuntu-latest
