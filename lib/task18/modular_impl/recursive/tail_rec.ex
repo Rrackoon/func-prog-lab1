@@ -22,9 +22,3 @@ end
 # ]
 
 # Task18.Recursive.Rec.solve(triangle)
-triangle = [
-  [3],
-  [7, 4],
-  [2, 4, 6],
-  [8, 5, 9, 3]
-]

@@ -11,6 +11,6 @@ defmodule Task18.ModularImpl.Recursive.Rec do
       Enum.with_index(upper)
       |> Enum.map(fn {val, i} -> val + max(Enum.at(lower, i), Enum.at(lower, i + 1)) end)
 
-    [new_row | recursive_reduce([lower | rest])]
+    recursive_reduce([new_row | rest])
   end
 end

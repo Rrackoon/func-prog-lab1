@@ -7,6 +7,6 @@ defmodule Task18.ModularImpl.Reduce do
         fn {val, i} -> val + max(Enum.at(lower, i), Enum.at(lower, i + 1)) end
       )
     end)
+    |> hd()
   end
-  |> hd()
 end

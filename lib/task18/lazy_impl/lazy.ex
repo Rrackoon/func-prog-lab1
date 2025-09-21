@@ -1,9 +1,9 @@
 defmodule Task18.LazyImpl.Lazy do
   def solve(triangle) do
-    Enum.reverse(triangle)
-    |> Stream.iterate(triangle, &collapse_step/1)
+    Stream.iterate(Enum.reverse(triangle), &collapse_step/1)
     |> Enum.find(fn rows -> length(rows) == 1 end)
-    |> hd()
+    |> hd() #[23]
+    |> hd() #23
   end
 
   def collapse_step([lower, upper | rest]) do

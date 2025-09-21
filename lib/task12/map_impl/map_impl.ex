@@ -6,5 +6,6 @@ defmodule Task12.MapImpl.MapImpl do
     |> Enum.map(fn n -> div(n * (n + 1), 2) end)
     |> Enum.map(fn t -> {t, divisors_count(t)} end)
     |> Enum.find(fn {_t, count} -> count > limit end)
+    |> elem(0)
   end
 end

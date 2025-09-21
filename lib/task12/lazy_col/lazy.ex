@@ -8,5 +8,6 @@ defmodule Task12.LazyCol.Lazy do
       {t, divisors_count(t)}
     end)
     |> Enum.find(fn {_t, count} -> count > limit end)
+    |> elem(0)
   end
 end

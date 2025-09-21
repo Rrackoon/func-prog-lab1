@@ -9,23 +9,23 @@ defmodule Task18Test do
   ]
 
   test "for_impl solves sample triangle" do
-    assert Task18.ForImpl.solve(@triangle) == 23
+    assert Task18.Forimpl.For.solve(@triangle) == 23
   end
 
   test "map_impl solves sample triangle" do
-    assert Task18.MapImpl.solve(@triangle) == 23
+    assert Task18.MapImpl.Map.solve(@triangle) == 23
   end
 
   test "lazy_impl solves sample triangle" do
-    assert Task18.LazyImpl.solve(@triangle) == 23
+    assert Task18.LazyImpl.Lazy.solve(@triangle) == 23
   end
 
   test "modular_impl.recursive solves sample triangle" do
-    assert Task18.ModularImpl.Recursive.solve(@triangle) == 23
+    assert Task18.ModularImpl.Recursive.Rec.solve(@triangle) == 23
   end
 
   test "modular_impl.tail_rec solves sample triangle" do
-    assert Task18.ModularImpl.TailRec.solve(@triangle) == 23
+    assert Task18.ModularImpl.Recursive.TailRec.solve(@triangle) == 23
   end
 
   test "modular_impl.reduce solves sample triangle" do
