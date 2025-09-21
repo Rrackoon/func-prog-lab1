@@ -13,12 +13,3 @@ defmodule Task18.ModularImpl.Recursive.TailRec do
     recursive_reduce([new_row | rest])
   end
 end
-
-# triangle = [
-#  [3],
-#  [7, 4],
-#  [2, 4, 6],
-#  [8, 5, 9, 3]
-# ]
-
-# Task18.Recursive.Rec.solve(triangle)
