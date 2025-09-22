@@ -1,6 +1,12 @@
-CXX = g++  
-CXXFLAGS = -std=c++17 -Wall -fPIC -stdlib=libc++
+CXX = g++
 PYTHON = python3
+
+UNAME_S := $(shell uname -s)
+
+CXXFLAGS = -std=c++17 -Wall -fPIC
+ifeq ($(UNAME_S),Darwin)
+    CXXFLAGS += -stdlib=libc++
+endif
 
 build_divisors:
 	$(CXX) $(CXXFLAGS) -shared -o lib/task12/cpp/divisors.so lib/task12/cpp/divisors.cpp
