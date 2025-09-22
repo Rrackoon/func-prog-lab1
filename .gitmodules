@@ -1,3 +1,0 @@
-[submodule "test/task1218_cpp/gtest"]
-	path = test/task1218_cpp/gtest
-	url = https://github.com/google/googletest.git

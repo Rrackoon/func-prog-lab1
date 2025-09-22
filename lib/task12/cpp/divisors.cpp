@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cmath>
+#include <cstdint>
+
 using namespace std;
 int divisors_count(int n){
     int count = 0;
