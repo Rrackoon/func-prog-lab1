@@ -11,3 +11,15 @@ extern "C" int divisors_count(int n) {
     }
     return count;
 }
+
+static int solve(int n){
+    int limit =500;
+    for( int n=1;; n++){
+        int t = n*(n+1)/2;
+        if(divisors_count(t) > limit){
+            return  t;
+            break;
+        }
+    }
+
+}
