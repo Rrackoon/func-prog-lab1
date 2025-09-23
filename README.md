@@ -1,3 +1,4 @@
+Выполнено Козыревой Эмилией ИСУ:394031.
 # Functional Programming Lab 1
 
 [![CI](https://github.com/Rrackoon/func-prog-lab1/actions/workflows/ci.yml/badge.svg)](https://github.com/Rrackoon/func-prog-lab1/actions)
